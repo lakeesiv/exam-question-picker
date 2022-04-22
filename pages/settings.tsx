@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import useLocalStorage from "use-local-storage";
+import ConditionalRender from "../components/ConditionalRender";
 import SubjectsPMFGraph from "../components/SubjectsPMFGraph";
 import DefaultSettings from "../defaults";
 import { SubjectWeightings, YearRange } from "../types";
@@ -17,8 +18,10 @@ const Settings = () => {
     "SubjectWeightings",
     DefaultSettings.subjectWeightings
   );
-
-  const allData = { ...localStorage };
+  let allData = null;
+  if (typeof window !== "undefined") {
+    allData = { ...localStorage };
+  }
 
   const [Years] = useLocalStorage<YearRange>("Years", [1999, 2019]);
 
@@ -32,17 +35,19 @@ const Settings = () => {
         Year Range: {Years[0]} - {Years[1]}
       </Box>
       <Divider />
-      <HStack py="4">
-        <a
-          type="button"
-          href={`data:text/json;charset=utf-8,${encodeURIComponent(
-            JSON.stringify(allData)
-          )}`}
-          download="data.json"
-        >
-          <Button>Download All Data</Button>
-        </a>
-      </HStack>
+      <ConditionalRender condition={allData as any}>
+        <HStack py="4">
+          <a
+            type="button"
+            href={`data:text/json;charset=utf-8,${encodeURIComponent(
+              JSON.stringify(allData)
+            )}`}
+            download="data.json"
+          >
+            <Button>Download All Data</Button>
+          </a>
+        </HStack>
+      </ConditionalRender>
     </VStack>
   );
 };
