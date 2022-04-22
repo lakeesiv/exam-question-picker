@@ -1,5 +1,5 @@
 import React from "react";
-import { getSubjectPMF } from "../utils/index";
+import { getRandomQuestion, getSubjectPMF } from "../utils/index";
 import useLocalStorage from "use-local-storage";
 import ConditionalRender from "../components/ConditionalRender";
 import { SubjectWeightings } from "../types";
@@ -14,36 +14,24 @@ const mySubjectWeightings: SubjectWeightings = {
   "2P7": 5,
 };
 
-const onClick = () => {
-  console.log(getSubjectPMF(mySubjectWeightings));
-};
-
 export default function Home() {
   const [SubjectWeightings, setSubjectWeightings] = useLocalStorage(
     "SubjectWeightings",
-    {}
+    mySubjectWeightings
   );
 
   return (
     <div>
-      <ConditionalRender
-        condition={Object.keys(SubjectWeightings).length !== 0}
+      <button onClick={() => console.log(getSubjectPMF(SubjectWeightings))}>
+        Hi
+      </button>
+      <button
+        onClick={() =>
+          console.log(getRandomQuestion(SubjectWeightings, [1999, 2018]))
+        }
       >
-        <button
-          onClick={() =>
-            console.log(getSubjectPMF(SubjectWeightings as SubjectWeightings))
-          }
-        >
-          Hi
-        </button>
-      </ConditionalRender>
-      <ConditionalRender
-        condition={Object.keys(SubjectWeightings).length === 0}
-      >
-        <button onClick={() => setSubjectWeightings(mySubjectWeightings)}>
-          Set
-        </button>
-      </ConditionalRender>
+        Question
+      </button>
     </div>
   );
 }

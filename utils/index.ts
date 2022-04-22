@@ -1,4 +1,10 @@
-import { Subject, SubjectWeightings, YearRange } from "../types";
+import {
+  LinksObject,
+  QuestionObject,
+  Subject,
+  SubjectWeightings,
+  YearRange,
+} from "../types";
 
 export const getSubjectPMF = (ranks: SubjectWeightings) => {
   const weightings = Object.values(ranks);
@@ -36,5 +42,14 @@ export const getRandomQuestion = (
   const year = randomIntFromInterval(yearRange[0], yearRange[1]);
   const subject = getRandomSubject(subjectWeights);
 
-  return { subject, year, question };
+  return { subject, year, question } as QuestionObject;
+};
+export const getLinks = (questionObject: QuestionObject): LinksObject => {
+  const { subject, year, question } = questionObject;
+  const base = `https://cribs-static.netlify.app/IB/tripos/${subject}/${year}/`;
+
+  return {
+    paper: `${base}QP_${question}.pdf`,
+    cribs: `${base}CRIB_${question}.pdf`,
+  };
 };

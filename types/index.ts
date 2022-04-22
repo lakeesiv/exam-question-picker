@@ -22,3 +22,14 @@ export interface LogObject {
   comments?: string;
   timeOfSubmission?: Date;
 }
+
+export interface QuestionObject {
+  subject: Subject;
+  year: number;
+  question: number;
+}
+
+export interface LinksObject {
+  paper: string;
+  cribs: string;
+}
