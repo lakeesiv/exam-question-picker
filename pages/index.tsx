@@ -1,5 +1,5 @@
 import React from "react";
-import { getRandomQuestion, getSubjectPMF } from "../utils/index";
+import { getLinks, getRandomQuestion, getSubjectPMF } from "../utils/index";
 import useLocalStorage from "use-local-storage";
 import ConditionalRender from "../components/ConditionalRender";
 import { SubjectWeightings } from "../types";
@@ -26,9 +26,10 @@ export default function Home() {
         Hi
       </button>
       <button
-        onClick={() =>
-          console.log(getRandomQuestion(SubjectWeightings, [1999, 2018]))
-        }
+        onClick={() => {
+          const question = getRandomQuestion(SubjectWeightings, [1999, 2018]);
+          console.log(question, getLinks(question));
+        }}
       >
         Question
       </button>
