@@ -1,18 +1,12 @@
+import { Box } from "@chakra-ui/react";
+import {
+  BarElement, CategoryScale, Chart as ChartJS, ChartData, Legend, LinearScale, Title,
+  Tooltip
+} from "chart.js";
 import React from "react";
 import { Bar } from "react-chartjs-2";
 import { SubjectWeightings } from "../types";
 import { getSubjectPMF } from "../utils";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  ChartData,
-} from "chart.js";
-import { Box } from "@chakra-ui/react";
 
 ChartJS.register(
   CategoryScale,

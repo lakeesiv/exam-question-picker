@@ -1,6 +1,6 @@
-import { StopwatchResult, useStopwatch } from "react-timer-hook";
-import React from "react";
 import { Box, Button, HStack, Text, VStack } from "@chakra-ui/react";
+import React from "react";
+import { StopwatchResult } from "react-timer-hook";
 
 interface StopwatchProps {
   stopwatch: StopwatchResult;

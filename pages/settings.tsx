@@ -1,10 +1,8 @@
 import {
   Box,
   Button,
-  Divider,
-  Heading,
-  HStack,
-  VStack,
+  Divider, HStack,
+  VStack
 } from "@chakra-ui/react";
 import React from "react";
 import useLocalStorage from "use-local-storage";

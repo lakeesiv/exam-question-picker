@@ -1,9 +1,9 @@
-import type { AppProps } from "next/app";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
-import theme from "../components/Theme/theme";
+import type { AppProps } from "next/app";
 import React from "react";
-import SimpleSidebar from "../components/Sidebar";
 import useLocalStorage from "use-local-storage";
+import SimpleSidebar from "../components/Sidebar";
+import theme from "../components/Theme/theme";
 import DefaultSettings from "../defaults/index";
 import { Log, SubjectWeightings, YearRange } from "../types";
 

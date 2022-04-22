@@ -1,14 +1,13 @@
 import {
-  TableContainer,
   Table,
-  Thead,
-  Tr,
-  Th,
+  TableContainer,
   Tbody,
   Td,
-  Tfoot,
+  Th,
+  Thead,
+  Tr,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React from "react";
 import { Log } from "../types";
 
 interface DataTableProps {

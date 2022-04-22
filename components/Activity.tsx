@@ -1,10 +1,9 @@
+import { Box } from "@chakra-ui/react";
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import ActivityCalendar from "react-activity-calendar";
 import ReactTooltip from "react-tooltip";
-import moment from "moment";
 import { Log } from "../types";
-import useLocalStorage from "use-local-storage";
-import { Box } from "@chakra-ui/react";
 
 const isBetween = (x: number, a: number, b: number) => x >= a && x <= b;
 
