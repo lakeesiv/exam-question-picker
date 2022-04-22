@@ -44,8 +44,8 @@ export const getRandomQuestion = (
 
   return { subject, year, question } as Question;
 };
-export const getLinks = (questionObject: Question): Links => {
-  const { subject, year } = questionObject;
+export const getLinks = (question: Question): Links => {
+  const { subject, year } = question;
   const base = `https://cribs-static.netlify.app/IB/tripos/${subject}/`;
 
   return {
