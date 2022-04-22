@@ -55,5 +55,8 @@ export const getLinks = (question: Question): Links => {
   };
 };
 export const addLog = (log: Log, setLogs: any) => {
-  setLogs((logs: Log[]) => [...logs, log]);
+  setLogs((logs: Log[]) => [
+    ...logs,
+    { ...log, date: new Date().toISOString().substring(0, 10) },
+  ]);
 };
