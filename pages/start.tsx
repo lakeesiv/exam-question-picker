@@ -5,18 +5,16 @@ import {
   HStack,
   NumberInput,
   NumberInputField,
-  Stack,
   Textarea,
   VStack,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { StopwatchResult, useStopwatch } from "react-timer-hook";
 import useLocalStorage from "use-local-storage";
-import ConditionalRender from "../components/ConditionalRender";
 import Stopwatch from "../components/Stopwatch";
 import DefaultSettings from "../defaults";
-import { Log, YearRange, SubjectWeightings, Question, Marks } from "../types";
-import { getLinks, getRandomQuestion } from "../utils";
+import { Log, Marks, Question, SubjectWeightings, YearRange } from "../types";
+import { addLog, getLinks, getRandomQuestion } from "../utils";
 
 const pickQuestionHandler = (
   s: SubjectWeightings,
@@ -31,11 +29,19 @@ const sumbitHandler = (
   stopwatch: StopwatchResult,
   question: Question,
   comments: string,
-  marks: Marks
+  marks: Marks,
+  setLogs: any
 ) => {
-  const { hours, minutes, seconds, reset, pause } = stopwatch;
+  const { hours, minutes, seconds, reset } = stopwatch;
   reset();
-  console.log({ hours, minutes, seconds, ...question, comments, marks });
+  const log: Log = {
+    ...question,
+    comments,
+    marks,
+    timeTaken: `${hours}:${minutes}:${seconds}`,
+  };
+  console.table(log);
+  addLog(log, setLogs);
 };
 
 const Start = () => {
@@ -66,7 +72,7 @@ const Start = () => {
           mr="4"
           mt={4}
           onClick={() =>
-            sumbitHandler(stopwatch, currentQuestion, comments, marks)
+            sumbitHandler(stopwatch, currentQuestion, comments, marks, setLogs)
           }
         >
           Sumbit and Move on
