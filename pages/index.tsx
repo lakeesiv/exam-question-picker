@@ -1,25 +1,38 @@
 import React from "react";
-import { myRanks, getWeightings } from "../utils/index";
+import { mySubjectWeightings, getSubjectPMF } from "../utils/index";
 import useLocalStorage from "use-local-storage";
 import ConditionalRender from "../components/ConditionalRender";
-import { Ranks } from "../types";
+import { SubjectWeightings } from "../types";
 
 const onClick = () => {
-  console.log(getWeightings(myRanks));
+  console.log(getSubjectPMF(mySubjectWeightings));
 };
 
 export default function Home() {
-  const [ranks, setRanks] = useLocalStorage("ranks", {});
+  const [SubjectWeightings, setSubjectWeightings] = useLocalStorage(
+    "SubjectWeightings",
+    {}
+  );
 
   return (
     <div>
-      <ConditionalRender condition={Object.keys(ranks).length !== 0}>
-        <button onClick={() => console.log(getWeightings(ranks as Ranks))}>
+      <ConditionalRender
+        condition={Object.keys(SubjectWeightings).length !== 0}
+      >
+        <button
+          onClick={() =>
+            console.log(getSubjectPMF(SubjectWeightings as SubjectWeightings))
+          }
+        >
           Hi
         </button>
       </ConditionalRender>
-      <ConditionalRender condition={Object.keys(ranks).length === 0}>
-        <button onClick={() => setRanks(myRanks)}>Set</button>
+      <ConditionalRender
+        condition={Object.keys(SubjectWeightings).length === 0}
+      >
+        <button onClick={() => setSubjectWeightings(mySubjectWeightings)}>
+          Set
+        </button>
       </ConditionalRender>
     </div>
   );

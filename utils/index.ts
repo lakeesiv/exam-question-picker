@@ -1,13 +1,13 @@
-import { Ranks } from "../types";
+import { SubjectWeightings } from "../types";
 
-export const getWeightings = (ranks: Ranks) => {
+export const getSubjectPMF = (ranks: SubjectWeightings) => {
   const weightings = Object.values(ranks);
   const sum = weightings.reduce((a, b) => a + b, 0);
 
   return weightings.map((w) => w / sum);
 };
 
-export const myRanks: Ranks = {
+export const mySubjectWeightings: SubjectWeightings = {
   "2P1": 9,
   "2P2": 3,
   "2P3": 7,

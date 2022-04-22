@@ -1,4 +1,4 @@
-export interface Ranks {
+export interface SubjectWeightings {
   "2P1": number;
   "2P2": number;
   "2P3": number;
