@@ -15,29 +15,16 @@ export default function Home() {
     );
   const [Logs, setLogs] = useLocalStorage<Log[] | []>("Logs", []);
   const [Years, setYears] = useLocalStorage<YearRange>("Years", [1999, 2019]);
-  const stopwatch = useStopwatch({ autoStart: false });
 
   return (
     <div>
       <button
         onClick={() =>
-          addLog({ question: 1, subject: "2P1", year: 2018 }, setLogs)
+          addLog(getRandomQuestion(SubjectWeightings, Years), setLogs)
         }
       >
-        Hi
+        Add Random
       </button>
-      <button
-        onClick={() => {
-          const question = getRandomQuestion(SubjectWeightings, Years);
-          console.log(question, getLinks(question));
-        }}
-      >
-        Question
-      </button>
-      <SubjectsPMFGraph
-        subjectWeightings={SubjectWeightings}
-      ></SubjectsPMFGraph>
-      <Stopwatch stopwatch={stopwatch} />
     </div>
   );
 }
