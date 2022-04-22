@@ -1,6 +1,17 @@
 import {
-  Box, BoxProps, CloseButton, Drawer,
-  DrawerContent, Flex, FlexProps, Icon, IconButton, Link, Text, useColorModeValue, useDisclosure
+  Box,
+  BoxProps,
+  CloseButton,
+  Drawer,
+  DrawerContent,
+  Flex,
+  FlexProps,
+  Icon,
+  IconButton,
+  Link,
+  Text,
+  useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React, { ReactNode, ReactText } from "react";
 import { IconType } from "react-icons";
@@ -64,7 +75,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Camrevision
+          LakeeSiv
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
