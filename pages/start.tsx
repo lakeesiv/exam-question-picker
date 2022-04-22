@@ -3,6 +3,8 @@ import {
   Button,
   Heading,
   HStack,
+  NumberInput,
+  NumberInputField,
   Stack,
   Textarea,
   VStack,
@@ -13,7 +15,7 @@ import useLocalStorage from "use-local-storage";
 import ConditionalRender from "../components/ConditionalRender";
 import Stopwatch from "../components/Stopwatch";
 import DefaultSettings from "../defaults";
-import { Log, YearRange, SubjectWeightings, Question } from "../types";
+import { Log, YearRange, SubjectWeightings, Question, Marks } from "../types";
 import { getLinks, getRandomQuestion } from "../utils";
 
 const pickQuestionHandler = (
@@ -28,11 +30,12 @@ const pickQuestionHandler = (
 const sumbitHandler = (
   stopwatch: StopwatchResult,
   question: Question,
-  comments: string
+  comments: string,
+  marks: Marks
 ) => {
   const { hours, minutes, seconds, reset, pause } = stopwatch;
   reset();
-  console.log({ hours, minutes, seconds, ...question, comments });
+  console.log({ hours, minutes, seconds, ...question, comments, marks });
 };
 
 const Start = () => {
@@ -49,6 +52,7 @@ const Start = () => {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const stopwatch = useStopwatch({ autoStart: false });
   const [comments, setComments] = useState("");
+  const [marks, setMarks] = useState<Marks>([0, 0]);
 
   let textAreaHandler = (e: any) => {
     let inputValue = e.target.value;
@@ -61,7 +65,9 @@ const Start = () => {
         <Button
           mr="4"
           mt={4}
-          onClick={() => sumbitHandler(stopwatch, currentQuestion, comments)}
+          onClick={() =>
+            sumbitHandler(stopwatch, currentQuestion, comments, marks)
+          }
         >
           Sumbit and Move on
         </Button>
@@ -108,6 +114,27 @@ const Start = () => {
             placeholder="Enter any comments here"
             size="md"
           />
+          <Heading fontSize="25" py="4">
+            Marks (achieved/total):
+          </Heading>
+          <HStack>
+            <NumberInput
+              onChange={(valueString) =>
+                setMarks((marks) => [parseInt(valueString), marks[1]])
+              }
+              max={50}
+            >
+              <NumberInputField />
+            </NumberInput>
+            <NumberInput
+              onChange={(valueString) =>
+                setMarks((marks) => [marks[0], parseInt(valueString)])
+              }
+              max={50}
+            >
+              <NumberInputField />
+            </NumberInput>
+          </HStack>
         </div>
       )}
     </Box>
