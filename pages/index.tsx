@@ -11,7 +11,10 @@ export default function Home() {
       "SubjectWeightings",
       DefaultSettings.subjectWeightings
     );
-  const [Logs, setLogs] = useLocalStorage<Log[] | []>("Logs", []);
+  const [Logs, setLogs] = useLocalStorage<Log[] | []>(
+    "Logs",
+    DefaultSettings.logs
+  );
   const [Years, setYears] = useLocalStorage<YearRange>("Years", [1999, 2019]);
 
   return (

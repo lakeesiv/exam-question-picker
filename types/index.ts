@@ -18,7 +18,7 @@ export interface Log {
   question: number;
   attempted?: boolean;
   marks?: Marks;
-  secondsTaken?: number;
+  timeTaken?: string;
   comments?: string;
   dateOfSubmission?: string;
 }
