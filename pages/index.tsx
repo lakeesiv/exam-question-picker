@@ -3,21 +3,13 @@ import { getLinks, getRandomQuestion, getSubjectPMF } from "../utils/index";
 import useLocalStorage from "use-local-storage";
 import ConditionalRender from "../components/ConditionalRender";
 import { SubjectWeightings } from "../types";
-
-const mySubjectWeightings: SubjectWeightings = {
-  "2P1": 9,
-  "2P2": 3,
-  "2P3": 7,
-  "2P4": 9,
-  "2P5": 5,
-  "2P6": 6,
-  "2P7": 5,
-};
+import DefaultSettings from "../defaults/index";
+import SubjectsPMFGraph from "../components/SubjectsPMFGraph";
 
 export default function Home() {
   const [SubjectWeightings, setSubjectWeightings] = useLocalStorage(
     "SubjectWeightings",
-    mySubjectWeightings
+    DefaultSettings.subjectWeightings
   );
 
   return (
@@ -33,6 +25,9 @@ export default function Home() {
       >
         Question
       </button>
+      <SubjectsPMFGraph
+        subjectWeightings={SubjectWeightings}
+      ></SubjectsPMFGraph>
     </div>
   );
 }
