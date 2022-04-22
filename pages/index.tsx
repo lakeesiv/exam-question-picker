@@ -1,7 +1,7 @@
 import React from "react";
 import { getLinks, getRandomQuestion, getSubjectPMF } from "../utils/index";
 import useLocalStorage from "use-local-storage";
-import Stopwatch from "../components/StopWatch";
+import Stopwatch from "../components/Stopwatch";
 import DefaultSettings from "../defaults/index";
 import SubjectsPMFGraph from "../components/SubjectsPMFGraph";
 import { useStopwatch } from "react-timer-hook";

@@ -1,5 +1,6 @@
-import { StopwatchResult } from "react-timer-hook";
+import { StopwatchResult, useStopwatch } from "react-timer-hook";
 import React from "react";
+import { Box, Button, HStack, Text, VStack } from "@chakra-ui/react";
 
 interface StopwatchProps {
   stopwatch: StopwatchResult;
@@ -7,15 +8,25 @@ interface StopwatchProps {
 const Stopwatch: React.FC<StopwatchProps> = ({ stopwatch }) => {
   const { seconds, minutes, hours, isRunning, start, pause, reset } = stopwatch;
   return (
-    <div style={{ textAlign: "center" }}>
-      <div style={{ fontSize: "100px" }}>
-        <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
-      </div>
-      <p>{isRunning ? "Running" : "Not running"}</p>
-      <button onClick={start}>Start</button>
-      <button onClick={pause}>Pause</button>
-      <button onClick={reset as any}>Reset</button>
-    </div>
+    <VStack textAlign="center" justifyContent="center">
+      <Box
+        w="sm"
+        h="xxs"
+        bgColor={isRunning ? "green.600" : "red.600"}
+        textAlign="center"
+        justifyItems="center"
+        borderRadius="xl"
+      >
+        <Text fontSize="80" fontFamily="mono" textColor="gray.900">
+          {hours}:{minutes}:{seconds}
+        </Text>
+      </Box>
+      <HStack spacing="8" pt="2" pb="4">
+        <Button onClick={start}>Start</Button>
+        <Button onClick={pause}>Pause</Button>
+        <Button onClick={reset as any}>Reset</Button>
+      </HStack>
+    </VStack>
   );
 };
 
