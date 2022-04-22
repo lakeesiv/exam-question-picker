@@ -20,7 +20,7 @@ export interface Log {
   marks?: Marks;
   secondsTaken?: number;
   comments?: string;
-  timeOfSubmission?: Date;
+  dateOfSubmission?: string;
 }
 
 export interface Question {

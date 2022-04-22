@@ -1,11 +1,9 @@
 import React from "react";
-import { addLog, getLinks, getRandomQuestion } from "../utils/index";
 import useLocalStorage from "use-local-storage";
-import Stopwatch from "../components/Stopwatch";
 import DefaultSettings from "../defaults/index";
-import SubjectsPMFGraph from "../components/SubjectsPMFGraph";
-import { useStopwatch } from "react-timer-hook";
 import { Log, SubjectWeightings, YearRange } from "../types";
+import { addLog, getRandomQuestion } from "../utils/index";
+import Activity from "../components/Activity";
 
 export default function Home() {
   const [SubjectWeightings, setSubjectWeightings] =
@@ -25,6 +23,7 @@ export default function Home() {
       >
         Add Random
       </button>
+      <Activity></Activity>
     </div>
   );
 }
