@@ -1,4 +1,11 @@
-import { Box, Divider, Heading, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Divider,
+  Heading,
+  HStack,
+  VStack,
+} from "@chakra-ui/react";
 import React from "react";
 import useLocalStorage from "use-local-storage";
 import SubjectsPMFGraph from "../components/SubjectsPMFGraph";
@@ -11,6 +18,8 @@ const Settings = () => {
     DefaultSettings.subjectWeightings
   );
 
+  const allData = { ...localStorage };
+
   const [Years] = useLocalStorage<YearRange>("Years", [1999, 2019]);
 
   return (
@@ -22,6 +31,18 @@ const Settings = () => {
       <Box py="3" px="3" borderRadius="lg" bgColor="gray.800">
         Year Range: {Years[0]} - {Years[1]}
       </Box>
+      <Divider />
+      <HStack py="4">
+        <a
+          type="button"
+          href={`data:text/json;charset=utf-8,${encodeURIComponent(
+            JSON.stringify(allData)
+          )}`}
+          download="data.json"
+        >
+          <Button>Download All Data</Button>
+        </a>
+      </HStack>
     </VStack>
   );
 };
