@@ -12,7 +12,7 @@ export interface SubjectWeightings {
   "2P7": number;
 }
 
-export interface LogObject {
+export interface Log {
   subject: Subject;
   year: number;
   question: number;
@@ -23,13 +23,13 @@ export interface LogObject {
   timeOfSubmission?: Date;
 }
 
-export interface QuestionObject {
+export interface Question {
   subject: Subject;
   year: number;
   question: number;
 }
 
-export interface LinksObject {
+export interface Links {
   paper: string;
   cribs: string;
 }

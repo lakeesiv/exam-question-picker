@@ -1,6 +1,6 @@
 import {
-  LinksObject,
-  QuestionObject,
+  Links,
+  Question,
   Subject,
   SubjectWeightings,
   YearRange,
@@ -42,9 +42,9 @@ export const getRandomQuestion = (
   const year = randomIntFromInterval(yearRange[0], yearRange[1]);
   const subject = getRandomSubject(subjectWeights);
 
-  return { subject, year, question } as QuestionObject;
+  return { subject, year, question } as Question;
 };
-export const getLinks = (questionObject: QuestionObject): LinksObject => {
+export const getLinks = (questionObject: Question): Links => {
   const { subject, year } = questionObject;
   const base = `https://cribs-static.netlify.app/IB/tripos/${subject}/`;
 
