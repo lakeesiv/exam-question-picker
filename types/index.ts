@@ -16,7 +16,6 @@ export interface Log {
   subject: Subject;
   year: number;
   question: number;
-  attempted?: boolean;
   marks?: Marks;
   timeTaken?: string;
   comments?: string;
