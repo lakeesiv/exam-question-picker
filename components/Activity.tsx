@@ -37,12 +37,17 @@ function getDates(startDate: string, stopDate: string, logs: Log[]) {
   return dateArray;
 }
 
-const Activity = () => {
-  const [Logs, setLogs] = useLocalStorage<Log[] | []>("Logs", []);
+interface ActivityProps {
+  Logs: Log[];
+}
+
+const Activity: React.FC<ActivityProps> = ({ Logs }) => {
+  // const [Logs, setLogs] = useLocalStorage<Log[] | []>("Logs", []);
   const [data, setData] = useState<any>([]);
 
   useEffect(() => {
     setData(getDates("2022-04-01", "2022-09-01", Logs));
+    console.log(Logs);
   }, [Logs]); // eslint-disable-line
 
   return (

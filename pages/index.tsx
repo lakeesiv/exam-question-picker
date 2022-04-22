@@ -26,7 +26,7 @@ export default function Home() {
       >
         Add Random
       </button>
-      <Activity></Activity>
+      <Activity Logs={Logs}></Activity>
     </div>
   );
 }

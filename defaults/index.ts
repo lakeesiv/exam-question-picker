@@ -17,7 +17,7 @@ const logs: Log[] = [
     question: 1,
     comments: "Went really well got 100%, pretty easy",
     timeTaken: "13:54",
-    dateOfSubmission: "21-04-2022",
+    dateOfSubmission: "2022-04-21",
   },
   {
     subject: "2P7",
@@ -26,7 +26,7 @@ const logs: Log[] = [
     comments:
       "First two parts went well, well spotted on realizng the fluxes were zero. Last past did not get but it was onl 4 marks so not a huge deal",
     timeTaken: "11:00",
-    dateOfSubmission: "21-04-2022",
+    dateOfSubmission: "2022-04-21",
   },
   {
     subject: "2P4",
@@ -35,7 +35,7 @@ const logs: Log[] = [
     comments:
       "Right techniques but many silly errors\n\nb) Substituted expression for U_2 wrong\nc) rho somehow disappered",
     timeTaken: "10:55",
-    dateOfSubmission: "21-04-2022",
+    dateOfSubmission: "2022-04-21",
   },
   {
     subject: "2P7",
@@ -44,7 +44,7 @@ const logs: Log[] = [
     comments:
       "went decently\nmissed part in part b where we used incompressiblit\nother then that it is all good",
     timeTaken: "11:00",
-    dateOfSubmission: "21-04-2022",
+    dateOfSubmission: "2022-04-21",
   },
   {
     subject: "2P1",
@@ -53,7 +53,7 @@ const logs: Log[] = [
     comments:
       "Gave up, lots of issues with this\nmessed up vel diagram, and did some progress with accel diagram, revisit",
     timeTaken: "13:28",
-    dateOfSubmission: "22-04-2022",
+    dateOfSubmission: "2022-04-22",
   },
 ];
 const DefaultSettings = { subjectWeightings, logs };
