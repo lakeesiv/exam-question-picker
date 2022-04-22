@@ -23,7 +23,7 @@ export default function Home() {
   const stopwatch = useStopwatch({ autoStart: false });
 
   return (
-    <SimpleSidebar>
+    <div>
       <button
         onClick={() =>
           addLog({ question: 1, subject: "2P1", year: 2018 }, setLogs)
@@ -43,6 +43,6 @@ export default function Home() {
         subjectWeightings={SubjectWeightings}
       ></SubjectsPMFGraph>
       <Stopwatch stopwatch={stopwatch} />
-    </SimpleSidebar>
+    </div>
   );
 }
