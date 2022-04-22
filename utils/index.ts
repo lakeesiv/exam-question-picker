@@ -1,5 +1,6 @@
 import {
   Links,
+  Log,
   Question,
   Subject,
   SubjectWeightings,
@@ -52,4 +53,7 @@ export const getLinks = (question: Question): Links => {
     paper: `${base}QP_${year}.pdf`,
     cribs: `${base}CRIB_${year}.pdf`,
   };
+};
+export const addLog = (log: Log, setLogs: any) => {
+  setLogs((logs: Log[]) => [...logs, log]);
 };
