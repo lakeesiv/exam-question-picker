@@ -22,6 +22,7 @@
     "react-dark-mode-toggle": "^0.2.0",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
+    "react-timer-hook": "^3.0.5",
     "typed.js": "^2.0.12",
     "use-local-storage": "^2.3.6"
   },
