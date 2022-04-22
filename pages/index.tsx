@@ -1,8 +1,18 @@
 import React from "react";
-import { mySubjectWeightings, getSubjectPMF } from "../utils/index";
+import { getSubjectPMF } from "../utils/index";
 import useLocalStorage from "use-local-storage";
 import ConditionalRender from "../components/ConditionalRender";
 import { SubjectWeightings } from "../types";
+
+const mySubjectWeightings: SubjectWeightings = {
+  "2P1": 9,
+  "2P2": 3,
+  "2P3": 7,
+  "2P4": 9,
+  "2P5": 5,
+  "2P6": 6,
+  "2P7": 5,
+};
 
 const onClick = () => {
   console.log(getSubjectPMF(mySubjectWeightings));
