@@ -1,3 +1,4 @@
+import { validMechanicsQuestions } from "../defaults/mechanics";
 import {
   Links,
   Log,
@@ -39,9 +40,24 @@ export const getRandomQuestion = (
   subjectWeights: SubjectWeightings,
   yearRange: YearRange
 ) => {
-  const question = randomIntFromInterval(1, 6);
   const year = randomIntFromInterval(yearRange[0], yearRange[1]);
   const subject = getRandomSubject(subjectWeights);
+
+  if (
+    subject === "2P1" &&
+    Object.keys(validMechanicsQuestions).includes(String(year))
+  ) {
+    const questions = validMechanicsQuestions[year];
+    const question = questions[Math.floor(Math.random() * questions.length)];
+    console.log(questions);
+    return {
+      year,
+      subject,
+      question,
+    };
+  }
+
+  const question = randomIntFromInterval(1, 6);
 
   return { subject, year, question } as Question;
 };

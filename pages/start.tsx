@@ -24,8 +24,12 @@ const pickQuestionHandler = (
 ) => {
   const q = getRandomQuestion(s, y);
   setCurrentQuestion(q);
-  const textField = document.getElementById("comments") as HTMLTextAreaElement;
-  textField.value = "";
+  try {
+    const textField = document.getElementById(
+      "comments"
+    ) as HTMLTextAreaElement;
+    textField.value = "";
+  } catch (e) {}
 };
 
 const sumbitHandler = (
