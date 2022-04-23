@@ -32,6 +32,9 @@ const weightedRandomChoice = <T>(items: T[], weights: number[]) => {
 const randomIntFromInterval = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
+const randomValueFromArray = <T>(array: T[]) => {
+  return array[randomIntFromInterval(0, array.length - 1)];
+};
 const getRandomSubject = (subjectWeights: SubjectWeightings) => {
   const pmf = getSubjectPMF(subjectWeights);
   const subjects = Object.keys(subjectWeights) as Subject[];
@@ -54,7 +57,7 @@ export const getRandomQuestion = (
       randomInt >= 3
     ) {
       const questions = validMechanicsQuestions[year];
-      const question = questions[Math.floor(Math.random() * questions.length)];
+      const question = randomValueFromArray(questions);
       console.log(questions);
       return {
         year,
@@ -63,7 +66,7 @@ export const getRandomQuestion = (
       };
     } else if (randomInt < 3) {
       const years = Object.keys(thirdYearMechanicsQuestions);
-      const year = parseInt(years[Math.floor(Math.random() * years.length)]);
+      const year = parseInt(randomValueFromArray(years));
       const subject = "3C5";
       const question = thirdYearMechanicsQuestions[year.toString() as any];
 
