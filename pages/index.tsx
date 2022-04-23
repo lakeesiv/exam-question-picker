@@ -16,12 +16,20 @@ export default function Home() {
   const daysTilExam = numberOfDaysBetween(new Date(), new Date("2022-06-07"));
 
   return (
-    <VStack pt="12">
+    <VStack pt="4">
+      <Box
+        p={2}
+        px={4}
+        bgColor="red.700"
+        borderRadius="xl"
+        alignSelf="flex-end"
+      >
+        <Heading fontSize={18} py={4}>
+          {daysTilExam} until exams
+        </Heading>
+      </Box>
       <Heading>Activity</Heading>
       <Activity Logs={Logs}></Activity>
-      <Box p={2} px={4} bgColor="red.700" borderRadius="xl">
-        <Heading py={4}>{daysTilExam} until exams</Heading>
-      </Box>
     </VStack>
   );
 }
