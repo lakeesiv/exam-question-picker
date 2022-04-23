@@ -24,6 +24,8 @@ const pickQuestionHandler = (
 ) => {
   const q = getRandomQuestion(s, y);
   setCurrentQuestion(q);
+  const textField = document.getElementById("comments") as HTMLTextAreaElement;
+  textField.value = "";
 };
 
 const sumbitHandler = (
@@ -76,6 +78,7 @@ const Start = () => {
           onClick={() => {
             sumbitHandler(stopwatch, currentQuestion, comments, marks, setLogs);
             pickQuestionHandler(SubjectWeightings, Years, setCurrentQuestion);
+            setMarks([0, 0]);
             toast({
               title: "Submitted",
               status: "success",
@@ -92,9 +95,10 @@ const Start = () => {
       <Button
         bgColor="red.800"
         mt={4}
-        onClick={() =>
-          pickQuestionHandler(SubjectWeightings, Years, setCurrentQuestion)
-        }
+        onClick={() => {
+          pickQuestionHandler(SubjectWeightings, Years, setCurrentQuestion);
+          setMarks([0, 0]);
+        }}
       >
         {currentQuestion ? "Skip" : "Start"}
       </Button>
@@ -130,6 +134,7 @@ const Start = () => {
             onChange={textAreaHandler}
             placeholder="Enter any comments here"
             size="md"
+            id="comments"
           />
           <Heading fontSize="25" py="4">
             Marks (achieved/total):
@@ -140,6 +145,7 @@ const Start = () => {
                 setMarks((marks) => [parseInt(valueString), marks[1]])
               }
               max={50}
+              value={marks[0]}
             >
               <NumberInputField />
             </NumberInput>
@@ -148,6 +154,7 @@ const Start = () => {
                 setMarks((marks) => [marks[0], parseInt(valueString)])
               }
               max={50}
+              value={marks[1]}
             >
               <NumberInputField />
             </NumberInput>
