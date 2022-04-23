@@ -6,6 +6,7 @@ import {
   NumberInput,
   NumberInputField,
   Textarea,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
@@ -59,6 +60,7 @@ const Start = () => {
   const stopwatch = useStopwatch({ autoStart: false });
   const [comments, setComments] = useState("");
   const [marks, setMarks] = useState<Marks>([0, 0]);
+  const toast = useToast();
 
   let textAreaHandler = (e: any) => {
     let inputValue = e.target.value;
@@ -71,9 +73,18 @@ const Start = () => {
         <Button
           mr="4"
           mt={4}
-          onClick={() =>
-            sumbitHandler(stopwatch, currentQuestion, comments, marks, setLogs)
-          }
+          onClick={() => {
+            sumbitHandler(stopwatch, currentQuestion, comments, marks, setLogs);
+            pickQuestionHandler(SubjectWeightings, Years, setCurrentQuestion);
+            toast({
+              title: "Submitted",
+              status: "success",
+              duration: 3000,
+              isClosable: true,
+              position: "top-right",
+              description: `Submitted \n ${currentQuestion.subject} ${currentQuestion.year} ${currentQuestion.question}`,
+            });
+          }}
         >
           Sumbit and Move on
         </Button>

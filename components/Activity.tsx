@@ -14,7 +14,9 @@ function getDates(startDate: string, stopDate: string, logs: Log[]) {
 
   while (currentDate <= s) {
     const cur = moment(currentDate).format("YYYY-MM-DD");
-    const count = logs.filter((log) => log.dateOfSubmission === cur).length;
+    const count = logs.filter(
+      (log) => log.dateOfSubmission!.substring(0, 10) === cur
+    ).length;
     if (isBetween(count, 1, 3)) {
       var level = 1;
     } else if (isBetween(count, 1, 5)) {
