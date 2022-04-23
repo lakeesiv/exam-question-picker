@@ -1,4 +1,7 @@
-import { validMechanicsQuestions } from "../defaults/mechanics";
+import {
+  thirdYearMechanicsQuestions,
+  validMechanicsQuestions,
+} from "../defaults/mechanics";
 import {
   Links,
   Log,
@@ -39,22 +42,37 @@ const getRandomSubject = (subjectWeights: SubjectWeightings) => {
 export const getRandomQuestion = (
   subjectWeights: SubjectWeightings,
   yearRange: YearRange
-) => {
+): Question => {
   const year = randomIntFromInterval(yearRange[0], yearRange[1]);
   const subject = getRandomSubject(subjectWeights);
 
-  if (
-    subject === "2P1" &&
-    Object.keys(validMechanicsQuestions).includes(String(year))
-  ) {
-    const questions = validMechanicsQuestions[year];
-    const question = questions[Math.floor(Math.random() * questions.length)];
-    console.log(questions);
-    return {
-      year,
-      subject,
-      question,
-    };
+  if (subject === "2P1") {
+    const randomInt = randomIntFromInterval(1, 10);
+
+    if (
+      Object.keys(validMechanicsQuestions).includes(String(year)) &&
+      randomInt >= 3
+    ) {
+      const questions = validMechanicsQuestions[year];
+      const question = questions[Math.floor(Math.random() * questions.length)];
+      console.log(questions);
+      return {
+        year,
+        subject,
+        question,
+      };
+    } else if (randomInt < 3) {
+      const years = Object.keys(thirdYearMechanicsQuestions);
+      const year = parseInt(years[Math.floor(Math.random() * years.length)]);
+      const subject = "3C5";
+      const question = thirdYearMechanicsQuestions[year.toString() as any];
+
+      return {
+        year,
+        subject,
+        question,
+      };
+    }
   }
 
   const question = randomIntFromInterval(1, 6);
@@ -63,7 +81,11 @@ export const getRandomQuestion = (
 };
 export const getLinks = (question: Question): Links => {
   const { subject, year } = question;
-  const base = `https://cribs-static.netlify.app/IB/tripos/${subject}/`;
+  let base = `https://cribs-static.netlify.app/IB/tripos/${subject}/`;
+
+  if (subject === "3C5") {
+    base = `https://cribs-static.netlify.app/IIA/tripos/C/3C5/`;
+  }
 
   return {
     paper: `${base}QP_${year}.pdf`,
