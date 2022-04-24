@@ -109,10 +109,10 @@ export const getTodaysLogs = (logs: Log[]) => {
 };
 export const getLogTimeTaken = (log: Log) => {
   const date = log.dateOfSubmission;
-  const time = new Date(date).toLocaleTimeString("en", {
+  const time = new Date(date).toLocaleTimeString("en-GB", {
     timeStyle: "short",
     hour12: false,
-    timeZone: "UTC",
+    timeZone: "Europe/London",
   });
   return time;
 };
