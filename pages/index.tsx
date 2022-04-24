@@ -2,6 +2,7 @@ import { Box, Heading, VStack } from "@chakra-ui/react";
 import React from "react";
 import useLocalStorage from "use-local-storage";
 import Activity from "../components/Activity";
+import Timeline from "../components/Timeline";
 import DefaultSettings from "../defaults/index";
 import { Log } from "../types";
 
@@ -20,16 +21,18 @@ export default function Home() {
       <Box
         p={2}
         px={4}
+        mr={2}
         bgColor="red.700"
         borderRadius="xl"
         alignSelf="flex-end"
       >
         <Heading fontSize={18} py={4}>
-          {daysTilExam} until exams
+          {daysTilExam} days until exams
         </Heading>
       </Box>
       <Heading>Activity</Heading>
       <Activity Logs={Logs}></Activity>
+      <Timeline></Timeline>
     </VStack>
   );
 }

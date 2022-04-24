@@ -101,3 +101,56 @@ export const addLog = (log: Log, setLogs: any) => {
     { ...log, dateOfSubmission: new Date().toISOString() },
   ]);
 };
+export const getTodaysLogs = (logs: Log[]) => {
+  const today = new Date().toISOString().split("T")[0];
+  try {
+    return logs.filter((log) => log.dateOfSubmission.split("T")[0] === today);
+  } catch (error) {}
+};
+export const getLogTimeTaken = (log: Log) => {
+  const date = log.dateOfSubmission;
+  const time = new Date(date).toLocaleTimeString("en", {
+    timeStyle: "short",
+    hour12: false,
+    timeZone: "UTC",
+  });
+  return time;
+};
+const getNumberOfOccurences = (array: any[], value: any) => {
+  return array.filter((a) => a === value).length;
+};
+export const getTimelineData = (logs: Log[]) => {
+  const todaysLogs = getTodaysLogs(logs);
+  if (todaysLogs) {
+    const times = todaysLogs.map((log) => getLogTimeTaken(log));
+    const hours = times.map((time) => parseInt(time.split(":")[0]));
+    const hoursInADay = [
+      4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+    ];
+    const hoursInADayString = [
+      "4am",
+      "5am",
+      "6am",
+      "7am",
+      "8am",
+      "9am",
+      "10am",
+      "11am",
+      "12am",
+      "1pm",
+      "2pm",
+      "3pm",
+      "4pm",
+      "5pm",
+      "6pm",
+      "7pm",
+      "8pm",
+      "9pm",
+    ];
+    const hoursInADayCount = hoursInADay.map((hour) =>
+      getNumberOfOccurences(hours, hour)
+    );
+
+    return { hoursInADayString, hoursInADayCount };
+  }
+};
