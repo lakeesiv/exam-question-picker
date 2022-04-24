@@ -104,12 +104,12 @@ export const addLog = (log: Log, setLogs: any) => {
 export const getTodaysLogs = (logs: Log[]) => {
   const today = new Date().toISOString().split("T")[0];
   try {
-    return logs.filter((log) => log.dateOfSubmission.split("T")[0] === today);
+    return logs.filter((log) => log.dateOfSubmission!.split("T")[0] === today);
   } catch (error) {}
 };
 export const getLogTimeTaken = (log: Log) => {
   const date = log.dateOfSubmission;
-  const time = new Date(date).toLocaleTimeString("en-GB", {
+  const time = new Date(date as string).toLocaleTimeString("en-GB", {
     timeStyle: "short",
     hour12: false,
     timeZone: "Europe/London",
